@@ -11,9 +11,9 @@ jobs:
       - uses: actions/checkout@v3
       - run: |
           git remote add openatom https://github.com/OpenAtom-Linyaps/linyaps
-          git fetch openatom -n
+          git fetch openatom --no-tags
           git remote add deepin https://github.com/deepin-community/linyaps
-          git fetch deepin -n
+          git fetch deepin --no-tags
           git reset --hard openatom/master
           git checkout deepin/master debian
           git checkout deepin/master rpm
@@ -25,7 +25,7 @@ jobs:
           push_options: --force
           commit_message: Automated Change
       - run: |
-          rm debian/patch
+          rm debian/patchs || true
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: obs_latest_nopatch
