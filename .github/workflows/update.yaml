@@ -16,6 +16,7 @@ jobs:
           git reset --hard openatom/master
           git checkout deepin/master debian
           git checkout deepin/master rpm
+          rm -r .github
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           branch: obs_latest
