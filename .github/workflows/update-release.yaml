@@ -1,0 +1,26 @@
+name: Update branch
+on:
+  workflow_dispatch:
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          git remote add openatom https://github.com/OpenAtom-Linyaps/linyaps
+          git fetch openatom --no-tags
+          git reset --head openatom/release/1.8.0-pre
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: obs_release
+          create_branch: true
+          push_options: --force
+          commit_message: Automated Change
+      - run: |
+          rm -r debian/patches
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          branch: obs_release_nopatch
+          create_branch: true
+          push_options: --force
+          commit_message: Automated Change
