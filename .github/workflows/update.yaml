@@ -1,0 +1,23 @@
+name: CI
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+          git remote add openatom https://github.com/OpenAtom-Linyaps/linyaps
+          git fetch openatom
+          git remote add deepin https://github.com/deepin-community/linyaps
+          git fetch deepin
+          git reset --hard openatom/master
+          git checkout deepin/master debian
+          git checkout deepin/master rpm
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: plain
+          create_branch: true
+          push_options: --force
