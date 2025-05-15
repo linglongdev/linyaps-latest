@@ -10,6 +10,7 @@ jobs:
           git remote add openatom https://github.com/deepin-community/linyaps
           git fetch openatom --no-tags
           git reset --hard openatom/release/1.8.0-pre
+          rm -r .github || true
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: obs_release
