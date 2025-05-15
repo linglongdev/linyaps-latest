@@ -17,14 +17,15 @@ jobs:
           git checkout deepin/master debian
           git checkout deepin/master rpm
           rm -rf .github
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: obs_latest
           create_branch: true
           push_options: --force
+          commit_message: Automated Change
       - run: |
           rm debian/patch
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: obs_latest_nopatch
           create_branch: true
