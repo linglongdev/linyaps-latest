@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          git remote add openatom https://github.com/OpenAtom-Linyaps/linyaps
+          git remote add openatom https://github.com/deepin-community/linyaps
           git fetch openatom --no-tags
           git reset --head openatom/release/1.8.0-pre
       - uses: stefanzweifel/git-auto-commit-action@v5
