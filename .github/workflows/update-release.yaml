@@ -1,4 +1,4 @@
-name: Update branch
+name: Update release
 on:
   workflow_dispatch:
 jobs:
