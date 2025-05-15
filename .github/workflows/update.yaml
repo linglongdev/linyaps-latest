@@ -18,6 +18,13 @@ jobs:
           git checkout deepin/master rpm
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          branch: plain
+          branch: obs_latest
+          create_branch: true
+          push_options: --force
+      - run: |
+          rm debian/patch
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          branch: obs_latest_nopatch
           create_branch: true
           push_options: --force
