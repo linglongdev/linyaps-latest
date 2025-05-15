@@ -25,7 +25,7 @@ jobs:
           push_options: --force
           commit_message: Automated Change
       - run: |
-          rm debian/patches
+          rm -r debian/patches
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: obs_latest_nopatch
