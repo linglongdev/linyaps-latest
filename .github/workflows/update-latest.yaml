@@ -28,7 +28,7 @@ jobs:
           # 删除patch
           rm -r debian/patches
           # 删除preloader相关的代码
-          sed '/preloader/d' debian/linglong-bin.postinst debian/linglong-bin.install debian/linglong-bin.postinst
+          sed -i '/preloader/d' debian/linglong-bin.postinst debian/linglong-bin.install debian/linglong-bin.postinst
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: obs_latest_nopatch
